@@ -1,32 +1,35 @@
-.input-wrapper {
-  display: flex;
-  width: 500px;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.input, .select {
-  flex-basis: 46%;
-  display: flex;
-  flex-direction: column;
-
-  label {
-    padding-right: 4px;
-    margin-bottom: 4px;
+::ng-deep{
+  .input-wrapper {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    margin-bottom: 12px;
   }
-}
 
-input, select {
-  border-radius: 8px;
-  border: 1px solid #7f7f7f;
-  height: 40px;
-  font-size: 12px;
-  -webkit-appearance: none;
-  padding: 0 8px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  .input, .select {
+    flex-basis: 46%;
+    display: flex;
+    flex-direction: column;
 
-select{
-  padding-top: 10px;
+    label {
+      padding-right: 4px;
+      margin-bottom: 4px;
+    }
+  }
+
+  input, select {
+    border-radius: 8px;
+    border: 1px solid #7f7f7f;
+    height: 40px;
+    font-size: 12px;
+    -webkit-appearance: none;
+    padding: 0 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  select{
+    padding-top: 10px;
+  }
+
 }
