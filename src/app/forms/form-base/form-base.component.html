@@ -2,20 +2,25 @@
   <div class="input-wrapper">
     <div class="input">
       <label>name</label>
-      <input type="text" placeholder="name">
+      <input type="text" placeholder="name" formControlName="name">
     </div>
 
     <div class="input">
       <label>family</label>
-      <input type="text" placeholder="family">
+      <input type="text" placeholder="family" formControlName="family">
     </div>
   </div>
 
     <div class="input-wrapper">
-      <select class="select" name="" id="">
-        <option value="">Type A</option>
-        <option value="">Type B</option>
+      <select class="select" name="" id="" formControlName="type">
+        <option disabled selected value hidden>select an option</option>
+        <option value="1">skills</option>
+        <option value="2">project</option>
       </select>
     </div>
-
 </form>
+
+<ng-conatiner [ngSwitch]="form?.controls['type']?.value">
+  <app-form-skills *ngSwitchCase="'skills'"></app-form-skills>
+  <app-form-projects *ngSwitchCase="'projects'"></app-form-projects>
+</ng-conatiner>
