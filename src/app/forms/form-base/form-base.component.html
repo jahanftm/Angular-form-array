@@ -1,4 +1,4 @@
-<form>
+<form [formGroup]="form">
   <div class="input-wrapper">
     <div class="input">
       <label>name</label>
@@ -11,16 +11,19 @@
     </div>
   </div>
 
-    <div class="input-wrapper">
-      <select class="select" name="" id="" formControlName="type">
-        <option disabled selected value hidden>select an option</option>
-        <option value="1">skills</option>
-        <option value="2">project</option>
-      </select>
-    </div>
+  <div class="input-wrapper">
+    <select style="flex-basis: 100%; margin-top: 12px" class="select" (change)="select($event)" formControlName="type">
+      <option disabled selected value="select an option" hidden>select an option</option>
+      <option value="skills">skills</option>
+      <option value="project">project</option>
+    </select>
+  </div>
 </form>
 
-<ng-conatiner [ngSwitch]="form?.controls['type']?.value">
+
+<ng-conatiner [ngSwitch]="form.controls['type']?.value">
+
   <app-form-skills *ngSwitchCase="'skills'"></app-form-skills>
   <app-form-projects *ngSwitchCase="'projects'"></app-form-projects>
+
 </ng-conatiner>

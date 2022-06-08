@@ -1,13 +1,24 @@
 <section>
-  <div class="input-wrapper">
-    <div class="input">
-      <label>skill</label>
-      <input type="text" placeholder="name" formControlName="skill">
-    </div>
+  <form [formGroup]="form">
 
-<!--    <div class="input">-->
-<!--      <label>family</label>-->
-<!--      <input type="text" placeholder="family" formControlName="family">-->
-<!--    </div>-->
+
+    <div formArrayName="items" *ngFor="let item of form.get('items')['controls']; let i = index;">
+      <div class="input-wrapper" [formGroupName]="i">
+        <div class="input">
+          <label>skill</label>
+          <input type="text" placeholder="skill" formControlName="skill">
+        </div>
+
+        <div class="input">
+          <label>description</label>
+          <input type="text" placeholder="description" formControlName="description">
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="btns">
+    <button (click)="addItems()">add</button>
+    <button (click)="removeItem()" *ngIf="form.get('items')['controls'].length > 1">remove</button>
   </div>
 </section>

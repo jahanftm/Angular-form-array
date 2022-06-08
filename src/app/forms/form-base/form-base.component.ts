@@ -20,8 +20,12 @@ export class FormBaseComponent implements OnInit {
   createForm(): void {
     this.form = this.fb.group({
       name: [null, Validators.required],
-      family: [null, Validators.required]
+      family: [null, Validators.required],
+      type: 'select an option'
     });
   }
 
+  select(evt: any): void {
+    console.log(evt.target.value);
+  }
 }
