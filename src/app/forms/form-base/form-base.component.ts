@@ -28,4 +28,8 @@ export class FormBaseComponent implements OnInit {
   select(evt: any): void {
     console.log(evt.target.value);
   }
+
+  changeForm(val): void{
+    console.log(val);
+  }
 }
