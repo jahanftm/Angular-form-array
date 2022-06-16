@@ -25,6 +25,6 @@
 <ng-conatiner [ngSwitch]="form.controls['type']?.value">
 
   <app-form-skills *ngSwitchCase="'skills'" (changeForm)="changeForm($event)"></app-form-skills>
-  <app-form-projects *ngSwitchCase="'projects'"></app-form-projects>
+  <app-form-projects *ngSwitchCase="'projects'" (changeForm)="changeForm($event)"></app-form-projects>
 
 </ng-conatiner>

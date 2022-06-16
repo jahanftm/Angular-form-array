@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,6 +10,9 @@ export class FormProjectsComponent implements OnInit {
 
   form: FormGroup;
 
+  @Output()
+  changeForm: EventEmitter<any> = new EventEmitter();
+
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       items: this.fb.array([this.createItem()])
@@ -17,13 +20,16 @@ export class FormProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form.valueChanges.subscribe(data => {
+      this.changeForm.emit(this.form.getRawValue());
+    });
   }
 
   createItem(): FormGroup {
     return this.fb.group({
       project: [null, Validators.required],
       date: [null, Validators.required],
-      description: [null, Validators.required],
+      description: null,
     });
   }
 
@@ -39,5 +45,9 @@ export class FormProjectsComponent implements OnInit {
       items.removeAt(items.length - 1);
     }
     this.form.setControl('items', items);
+  }
+
+  emitForm(form): void {
+    this.form.valid ? this.changeForm.emit(form) : this.changeForm.emit(null);
   }
 }
