@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-form-base',
@@ -19,17 +19,21 @@ export class FormBaseComponent implements OnInit {
 
   createForm(): void {
     this.form = this.fb.group({
-      name: [null, Validators.required],
-      family: [null, Validators.required],
+      name: [null, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
+      family: [null, [Validators.required, Validators.pattern(/^[a-zA-Z]+$/)]],
       type: 'select an option'
     });
   }
+
+  // validateName(val: string): boolean {
+  //   return /[a-zA-Z]/.test(val);
+  // }
 
   select(evt: any): void {
     console.log(evt.target.value);
   }
 
-  changeForm(val): void{
+  changeForm(val): void {
     console.log(val);
   }
 }

@@ -4,11 +4,17 @@
     <div class="input">
       <label>name</label>
       <input type="text" placeholder="name" formControlName="name">
+      <div class="error" *ngIf="form.get('name').touched && form.get('name').invalid">
+        the name should be letter
+      </div>
     </div>
 
     <div class="input">
       <label>family</label>
       <input type="text" placeholder="family" formControlName="family">
+      <div class="error" *ngIf="form.get('family').touched && form.get('family').invalid">
+        the family should be letter
+      </div>
     </div>
   </div>
 
